@@ -158,5 +158,25 @@ Route::get('/users/delete/{user}', function (User $user) {
 
 Route::get('/users-detail/{user}',[UserController::class , 'detailWithModelBinding']);
 
+// Getter & Setter / Accessor & Mutator
+
+Route::get('/accessor', function() {
+    $user = User::first();
+    $fullName = $user->full_name;
+    dd($fullName);
+});
+
+Route::get('/mutator', function () {
+    $user = User::create([
+        'uuid' => 'okwoka89a8978',
+        'first_name' =>  'ridzwan',
+        'last_name' => 'herdyantha',
+        'email' => 'ridzwan@gmail.com' ,
+        'password' => bcrypt('password') ,
+    ]);
+
+    dd($user);
+
+});
 
 require __DIR__.'/auth.php';
