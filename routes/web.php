@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
@@ -92,6 +93,8 @@ Route::get('create-user' , function(){
     
 // });
 
+// Laravel Spatie
+
 Route::get('create-article' , function(){
     dd('Ini adalah fitur create article. Hanya bisa diakses oleh author atau moderator');
 })->middleware('role:author|moderator');
@@ -103,6 +106,8 @@ Route::get('edit-article' , function(){
 Route::get('delete-article' , function(){
     dd('Ini adalah fitur delete article. Hanya bisa diakses oleh moderator');
 })->middleware('role:moderator');
+
+// Rollback data on Error
 
 Route::get('add-product' , function() {
     try {
@@ -124,6 +129,34 @@ Route::get('add-product' , function() {
     }
 
 });
+
+// Model Binding
+
+Route::get('/users', function () {
+    $users = User::all();
+    dd($users);
+});
+
+Route::get('/users/{id}', function (User $id) {
+    // $users = User::findOrFail($request->id)->toArray();
+    // dd($user->toArray());
+    // $users = User::all(); 
+    dd($id);
+});
+
+Route::get('/users/edit/{user}', function (User $user) {
+    $user->name = 'Kequeen';
+    $user->email = 'keqing@gmail.com';
+    $user->save();
+    // dd($user->toArray());
+});
+
+Route::get('/users/delete/{user}', function (User $user) {
+    $user->delete();
+    // dd($user->toArray());
+});
+
+Route::get('/users-detail/{user}',[UserController::class , 'detailWithModelBinding']);
 
 
 require __DIR__.'/auth.php';
