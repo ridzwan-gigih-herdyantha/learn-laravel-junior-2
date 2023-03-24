@@ -13,15 +13,28 @@
           <li class="nav-item">
             <a class="nav-link {{ ($active === "posts") ? 'active' : '' }} " href="/posts">Posts</a>
           </li>
-          {{-- <li class="nav-item">
-            <a class="nav-link {{ ($active === "posts") ? 'active' : '' }} " href="/posts">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ ($active === "categories") ? 'active' : '' }} " href="/categories">Categories</a>
-          </li> --}}
-          {{-- <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li> --}}
+        </ul>
+        <ul class="navbar-nav ms-auto">
+        @if (Route::has('login'))
+          @auth
+            <li class="nav-item">
+              <a class="nav-link {{ ($active === "posts") ? 'active' : 'dashboard' }}" href="{{ url('/dashboard') }}">Dashboard</a>
+            </li>
+              {{-- <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a> --}}
+          @else
+            <li class="nav-item">
+              <a class="nav-link {{ ($active === "posts") ? 'active' : 'login' }}" href="{{ route('login') }}">Log in</a>
+            </li>
+              {{-- <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a> --}}
+
+              @if (Route::has('register'))
+                <li class="nav-item">
+                  <a class="nav-link {{ ($active === "posts") ? 'active' : 'register' }}" href="{{ route('register') }}">Register</a>
+                </li>
+                  {{-- <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a> --}}
+              @endif
+          @endauth
+        @endif
         </ul>
       </div>
     </div>
