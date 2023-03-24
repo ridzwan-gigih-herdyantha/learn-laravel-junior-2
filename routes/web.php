@@ -2,6 +2,9 @@
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\ProductLogActivity;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -100,6 +103,27 @@ Route::get('edit-article' , function(){
 Route::get('delete-article' , function(){
     dd('Ini adalah fitur delete article. Hanya bisa diakses oleh moderator');
 })->middleware('role:moderator');
+
+Route::get('add-product' , function() {
+    try {
+
+        DB::beginTransaction();
+
+        Product::create([
+            'name' => 'Minyak Sayur'
+        ]);
+    
+        ProductLogActivity::create([
+            'description' => 'Item Minyak Sayur diinput oleh staff BA'
+        ]);
+
+        DB::commit();
+    } catch (\Throwable $e) {
+        throw $e;
+        DB::rollBack();
+    }
+
+});
 
 
 require __DIR__.'/auth.php';
