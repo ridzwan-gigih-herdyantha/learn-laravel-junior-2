@@ -13,6 +13,9 @@
           <li class="nav-item">
             <a class="nav-link {{ ($active === "posts") ? 'active' : '' }} " href="/posts">Posts</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {{ ($active === "category") ? 'active' : '' }} " href="/categories">Categories</a>
+          </li>
         </ul>
         <ul class="navbar-nav ms-auto">
         @if (Route::has('login'))

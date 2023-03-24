@@ -4,6 +4,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ Route::get('/', function () {
 
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{categories}', [CategoryController::class, 'show',]);
 
 Route::get('/dashboard', function(){
     return view('dashboard');
