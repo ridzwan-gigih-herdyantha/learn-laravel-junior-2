@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SendEmail;
 
 /*
 |--------------------------------------------------------------------------
@@ -178,5 +179,7 @@ Route::get('/mutator', function () {
     dd($user);
 
 });
+
+Route::get('send-email', [SendEmail::class , 'index']);
 
 require __DIR__.'/auth.php';
