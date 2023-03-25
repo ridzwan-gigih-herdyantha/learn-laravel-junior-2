@@ -11,13 +11,14 @@ class Product extends Model
 
     protected $fillable = ['name'];
 
-    protected static function booted()
-    {
-        static::created(function ($product) {
-            ProductLogActivity::create([
-                'description' => 'create product '.$product->name
-            ]);
-        });
-    }
+    //Event
+    // protected static function booted()
+    // {
+    //     static::created(function ($product) {
+    //         ProductLogActivity::create([
+    //             'description' => 'create product '.$product->name
+    //         ]);
+    //     });
+    // }
 
 }   

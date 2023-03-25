@@ -11,7 +11,7 @@ class ProductController extends Controller
     public function store()
     {
         $product = Product::create([
-            'name' => 'Kangkung'
+            'name' => 'Tomat'
         ]);
 
     }
