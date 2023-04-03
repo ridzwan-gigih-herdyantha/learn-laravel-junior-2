@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\ProductLogActivity;
 use Illuminate\Http\Request;
+use App\Events\ProductCreated;
+use App\Models\ProductLogActivity;
 
 class ProductController extends Controller
 {
     public function store()
     {
         $product = Product::create([
-            'name' => 'Tomat'
+            'name' => 'Ngawi'
         ]);
 
+        ProductCreated::dispatch($product);
     }
 }

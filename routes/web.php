@@ -3,17 +3,19 @@
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Product;
+use Illuminate\Auth\Events\Login;
 use App\Models\ProductLogActivity;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\SendEmail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SendEmail;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -185,4 +187,17 @@ Route::get('send-email', [SendEmail::class , 'index']);
 
 Route::get('create-product-event', [ProductController::class , 'store']);
 
-require __DIR__.'/auth.php';
+Route::get('/send-newsletter', [SendEmail::class, 'sendNewsLetter']);
+
+
+//Multiple Guards Authentication
+Route::get('/login' , [AuthController::class, 'login'])->name('login');
+Route::post('/login' , [AuthController::class, 'processLogin']);
+Route::get('/logout' , [AuthController::class, 'logout']);
+Route::get('/home', function() {
+    return 'kamu berhasil login';
+})->middleware('auth:author,web');
+
+
+// Route Laravel Breeze
+// require __DIR__.'/auth.php';

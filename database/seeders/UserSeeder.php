@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        for ($i=0;$i < 100; $i++ )
+        for ($i=0;$i < 25; $i++ )
         {
             $data[] = [
                 'uuid' => Str::uuid(),

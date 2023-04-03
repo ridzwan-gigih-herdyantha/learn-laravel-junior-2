@@ -15,9 +15,9 @@ class ProductObserver
      */
     public function created(Product $product)
     {
-        ProductLogActivity::create([
-            'description' => 'create product '.$product->name
-        ]);
+        // ProductLogActivity::create([
+        //     'description' => 'create product '.$product->name
+        // ]);
     }
 
     /**
