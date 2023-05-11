@@ -138,7 +138,6 @@ Route::get('add-product' , function() {
 
 Route::get('/users', function () {
     $users = User::all();
-    dd($users);
 });
 
 Route::get('/users/{id}', function (User $id) {
