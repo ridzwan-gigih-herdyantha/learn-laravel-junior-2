@@ -16,6 +16,7 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,7 +145,7 @@ Route::get('/users/{id}', function (User $id) {
     // $users = User::findOrFail($request->id)->toArray();
     // dd($user->toArray());
     // $users = User::all(); 
-    dd($id);
+    // dd($id);
 });
 
 Route::get('/users/edit/{user}', function (User $user) {
@@ -166,7 +167,7 @@ Route::get('/users-detail/{user}',[UserController::class , 'detailWithModelBindi
 Route::get('/accessor', function() {
     $user = User::first();
     $fullName = $user->full_name;
-    dd($fullName);
+    // dd($fullName);
 });
 
 Route::get('/mutator', function () {
@@ -181,6 +182,8 @@ Route::get('/mutator', function () {
     // dd($user);
 
 });
+
+Route::get('/video', [VideoController::class , 'index']);
 
 Route::get('send-email', [SendEmail::class , 'index']);
 
