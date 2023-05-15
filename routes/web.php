@@ -194,7 +194,7 @@ Route::get('/send-newsletter', [SendEmail::class, 'sendNewsLetter']);
 
 //Multiple Guards Authentication
 Route::get('/login' , [AuthController::class, 'login'])->name('login');
-Route::post('/login' , [AuthController::class, 'processLogin']);
+Route::post('/login' , [AuthController::class, 'processLogin'])->middleware('throttle:login');
 Route::get('/logout' , [AuthController::class, 'logout']);
 Route::get('/home', function() {
     return 'kamu berhasil login';
