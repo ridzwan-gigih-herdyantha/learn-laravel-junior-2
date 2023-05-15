@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(CommentSeeder::class);
         $this->call(TagSeeder::class);
         $this->call(TaggableSeeder::class);
+        $this->call(CountrySeeder::class);
+        $this->call(CitySeeder::class);
         // Post::create([
         //     'title' => 'Ini adalah title 1' , 
         //     'excerpt' => 'Ini adalah excerpt',

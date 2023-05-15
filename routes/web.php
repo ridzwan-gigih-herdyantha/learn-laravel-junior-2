@@ -16,6 +16,7 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\VideoController;
 
 /*
@@ -203,3 +204,7 @@ Route::get('/home', function() {
 
 // Route Laravel Breeze
 // require __DIR__.'/auth.php';
+
+// Export Excel
+Route::get('/cities' , [CityController::class, 'index']);
+Route::get('/city-export', [CityController::class, 'export']);
