@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class VideoController extends Controller
 {
     public function index(){
-        // $videos = Video::with('comments')->get();
-        // dd($videos);
+        $videos = Video::with('comments','tags')->get();
+        dd($videos);
     }
 }
