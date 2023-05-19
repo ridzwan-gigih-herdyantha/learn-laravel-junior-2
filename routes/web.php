@@ -208,3 +208,5 @@ Route::get('/home', function() {
 // Export Excel
 Route::get('/cities' , [CityController::class, 'index']);
 Route::get('/city-export', [CityController::class, 'export']);
+//Import Excel
+Route::post('/city-import', [CityController::class, 'import']);
