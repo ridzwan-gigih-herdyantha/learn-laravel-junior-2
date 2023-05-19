@@ -15,7 +15,7 @@ class CitiesImport implements ToCollection
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
-    public function collection(Collec  tion $rows)
+    public function collection(Collection $rows)
     {
         foreach ($rows as $row) 
         {
